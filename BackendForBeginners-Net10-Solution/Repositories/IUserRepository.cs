@@ -4,13 +4,15 @@ namespace BackendForBeginners_Net10_Solution.Repositories;
 
 public interface IUserRepository
 {
-    public User? GetById(Guid id);
+    public Task<User?> GetById(Guid id);
 
-    public List<User> GetAll();
+    public Task<User?> GetByEmail(string email);
 
-    public void Create(User user);
+    public Task<List<User>> GetAll();
 
-    public void Update(User user);
+    public Task Create(User user);
 
-    public void Delete(User user);
+    public Task Update(User user);
+
+    public Task Delete(User user);
 }

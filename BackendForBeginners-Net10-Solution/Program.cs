@@ -1,10 +1,18 @@
 using BackendForBeginners_Net10_Solution;
+using BackendForBeginners_Net10_Solution.Repositories;
+using BackendForBeginners_Net10_Solution.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Register repositories
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+// Register services
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
