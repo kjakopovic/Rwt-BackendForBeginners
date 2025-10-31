@@ -1,0 +1,6 @@
+@BackendForBeginners_Net10_Solution_HostAddress = http://localhost:5274
+
+GET {{BackendForBeginners_Net10_Solution_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
