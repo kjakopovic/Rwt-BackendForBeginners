@@ -1,7 +1,7 @@
 using BackendForBeginners_Net10_Solution.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BackendForBeginners_Net10_Solution.Data;
+namespace BackendForBeginners_Net10_Solution;
 
 public class AppDbContext : DbContext
 {

@@ -1,4 +1,4 @@
-using BackendForBeginners_Net10_Solution.Data;
+using BackendForBeginners_Net10_Solution;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
