@@ -8,14 +8,23 @@
     ".NETCoreApp,Version=v10.0": {
       "BackendForBeginners-Net10-Solution/1.0.0": {
         "dependencies": {
+          "BCrypt.Net-Next": "4.0.3",
           "Microsoft.AspNetCore.OpenApi": "10.0.0-rc.2.25502.107",
           "Microsoft.EntityFrameworkCore": "9.0.10",
           "Microsoft.EntityFrameworkCore.Design": "9.0.10",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
-          "Swashbuckle.AspNetCore": "9.0.6"
+          "Swashbuckle.AspNetCore.SwaggerUI": "9.0.6"
         },
         "runtime": {
           "BackendForBeginners-Net10-Solution.dll": {}
+        }
+      },
+      "BCrypt.Net-Next/4.0.3": {
+        "runtime": {
+          "lib/net6.0/BCrypt.Net-Next.dll": {
+            "assemblyVersion": "4.0.3.0",
+            "fileVersion": "4.0.3.0"
+          }
         }
       },
       "Humanizer.Core/2.14.1": {
@@ -417,35 +426,6 @@
           }
         }
       },
-      "Swashbuckle.AspNetCore/9.0.6": {
-        "dependencies": {
-          "Swashbuckle.AspNetCore.Swagger": "9.0.6",
-          "Swashbuckle.AspNetCore.SwaggerGen": "9.0.6",
-          "Swashbuckle.AspNetCore.SwaggerUI": "9.0.6"
-        }
-      },
-      "Swashbuckle.AspNetCore.Swagger/9.0.6": {
-        "dependencies": {
-          "Microsoft.OpenApi": "2.0.0"
-        },
-        "runtime": {
-          "lib/net9.0/Swashbuckle.AspNetCore.Swagger.dll": {
-            "assemblyVersion": "9.0.6.0",
-            "fileVersion": "9.0.6.1840"
-          }
-        }
-      },
-      "Swashbuckle.AspNetCore.SwaggerGen/9.0.6": {
-        "dependencies": {
-          "Swashbuckle.AspNetCore.Swagger": "9.0.6"
-        },
-        "runtime": {
-          "lib/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
-            "assemblyVersion": "9.0.6.0",
-            "fileVersion": "9.0.6.1840"
-          }
-        }
-      },
       "Swashbuckle.AspNetCore.SwaggerUI/9.0.6": {
         "runtime": {
           "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
@@ -529,6 +509,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "BCrypt.Net-Next/4.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-W+U9WvmZQgi5cX6FS5GDtDoPzUCV4LkBLkywq/kRZhuDwcbavOzcDAr3LXJFqHUi952Yj3LEYoWW0jbEUQChsA==",
+      "path": "bcrypt.net-next/4.0.3",
+      "hashPath": "bcrypt.net-next.4.0.3.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",
@@ -655,27 +642,6 @@
       "sha512": "sha512-mw5vcY2IEc7L+IeGrxpp/J5OSnCcjkjAgJYCm/eD52wpZze8zsSifdqV7zXslSMmfJG2iIUGZyo3KuDtEFKwMQ==",
       "path": "npgsql.entityframeworkcore.postgresql/9.0.4",
       "hashPath": "npgsql.entityframeworkcore.postgresql.9.0.4.nupkg.sha512"
-    },
-    "Swashbuckle.AspNetCore/9.0.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-q/UfEAgrk6qQyjHXgsW9ILw0YZLfmPtWUY4wYijliX6supozC+TkzU0G6FTnn/dPYxnChjM8g8lHjWHF6VKy+A==",
-      "path": "swashbuckle.aspnetcore/9.0.6",
-      "hashPath": "swashbuckle.aspnetcore.9.0.6.nupkg.sha512"
-    },
-    "Swashbuckle.AspNetCore.Swagger/9.0.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Bgyc8rWRAYwDrzjVHGbavvNE38G1Dfgf1McHYm+WUr4TxkvEAXv8F8B1z3Kmz4BkDCKv9A/1COa2t7+Ri5+pLg==",
-      "path": "swashbuckle.aspnetcore.swagger/9.0.6",
-      "hashPath": "swashbuckle.aspnetcore.swagger.9.0.6.nupkg.sha512"
-    },
-    "Swashbuckle.AspNetCore.SwaggerGen/9.0.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-yYrDs5qpIa4UXP+a02X0ZLQs6HSd1C8t6hF6J1fnxoawi3PslJg1yUpLBS89HCbrDACzmwEGG25il+8aa0zdnw==",
-      "path": "swashbuckle.aspnetcore.swaggergen/9.0.6",
-      "hashPath": "swashbuckle.aspnetcore.swaggergen.9.0.6.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore.SwaggerUI/9.0.6": {
       "type": "package",

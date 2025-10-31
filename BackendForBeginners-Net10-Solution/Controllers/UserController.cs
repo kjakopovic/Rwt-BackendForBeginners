@@ -1,10 +1,9 @@
 using BackendForBeginners_Net10_Solution.Dtos;
-using BCrypt.Net;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackendForBeginners_Net10_Solution.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/users")]
 [ApiController]
 public class UserController(AppDbContext context) : ControllerBase
 {
@@ -37,6 +36,12 @@ public class UserController(AppDbContext context) : ControllerBase
             return BadRequest(ModelState);
         }
 
+        var existingUser = _context.Users.FirstOrDefault(u => u.Email == user.Email);
+        if (existingUser != null)
+        {
+            return Conflict(new { message = "A user with this email already exists." });
+        }
+
         var hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
         var newUser = new Models.User
@@ -49,7 +54,14 @@ public class UserController(AppDbContext context) : ControllerBase
         _context.Users.Add(newUser);
         _context.SaveChanges();
 
-        return Ok(newUser);
+        return Ok(new
+        {
+            newUser.Id,
+            newUser.Username,
+            newUser.Email,
+            newUser.CreatedAt,
+            newUser.UpdatedAt
+        });
     }
 
     [HttpPut("{id}")]
@@ -63,12 +75,20 @@ public class UserController(AppDbContext context) : ControllerBase
 
         user.Username = updatedUser.Username;
         user.Email = updatedUser.Email;
-        user.Password = updatedUser.Password;
+        user.Password = BCrypt.Net.BCrypt.HashPassword(updatedUser.Password);
         user.UpdatedAt = DateTime.UtcNow;
 
+        _context.Users.Update(user);
         _context.SaveChanges();
 
-        return Ok();
+        return Ok(new
+        {
+            user.Id,
+            user.Username,
+            user.Email,
+            user.CreatedAt,
+            user.UpdatedAt
+        });
     }
 
     [HttpDelete("{id}")]
