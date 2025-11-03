@@ -1,4 +1,7 @@
+version: "3.9"
+
 services:
+  # --- PostgreSQL Database ---
   postgres_db:
     image: postgres:alpine
     container_name: postgres-db
@@ -10,9 +13,13 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_DB: BackendTutorial
+    volumes:
+      - pgdata:/var/lib/postgresql/data
 
+  # --- pgAdmin for database management ---
   dev_pgadmin:
     image: dpage/pgadmin4
+    container_name: pgadmin
     depends_on:
       - postgres_db
     ports:
@@ -23,6 +30,26 @@ services:
       PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
       PGADMIN_DEFAULT_PASSWORD: admin
 
+  # --- .NET 10 Backend Application ---
+  backend_app:
+    build:
+      context: ./BackendForBeginners-Net10-Solution
+      dockerfile: Dockerfile
+    container_name: backend-app
+    depends_on:
+      - postgres_db
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: "Host=postgres_db;Port=5432;Database=BackendTutorial;Username=postgres;Password=postgres"
+    command: /bin/sh -c "echo '⏳ Waiting for database...' && sleep 5 && dotnet BackendForBeginners-Net10-Solution.dll"
+
 networks:
   backend:
     driver: bridge
+
+volumes:
+  pgdata:
